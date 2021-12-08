@@ -1,0 +1,45 @@
+<form [formGroup]="paymentForm">
+<div class="row">
+
+    <div class="col-lg-4">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Payment Type</label>
+          <input type="text" class="form-control" id="firstname"  formControlName="payment_type">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Card Name</label>
+          <input type="text" class="form-control" id="firstname"  formControlName="cardname">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Card Number</label>
+          <input type="text" class="form-control" id="firstname"  formControlName="cardnumber">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Cvv</label>
+          <input type="text" class="form-control"   formControlName="cvv">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Expiry Year</label>
+          <input type="text" class="form-control"   formControlName="expiryyear">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Expiry Month</label>
+          <input type="text" class="form-control"   formControlName="expirymonth">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <button mat-raised-button color="primary" style="margin: 13px;" (click)="pay()">Pay</button>
+      </div>
+
+</div>
+</form>

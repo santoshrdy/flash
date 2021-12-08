@@ -1,0 +1,74 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container register">
+                <div class="row">
+                    <div class="col-md-3 register-left">
+                        <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+                        <h3>Welcome</h3>
+                        
+                        <input type="submit" name="" value="Login" routerLink="/login" ><br/>
+                    </div>
+                    <div class="col-md-9 register-right">
+                        
+                        <div class="tab-content" id="myTabContent">
+                         <form [formGroup]="signupForm" (ngSubmit)="register()">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                             
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="First Name *"  formControlName="firstname"/>
+                                            <div *ngIf="signupForm.get('firstname').dirty && signupForm.get('firstname').errors?.required">firstname is required</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Last Name *"  formControlName="lastname"/>
+                                            <div *ngIf="signupForm.get('lastname').dirty && signupForm.get('lastname').errors?.required">lastname is required</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Password *"  formControlName="password" />
+                                            <div *ngIf="signupForm.get('password').dirty && signupForm.get('password').errors?.required">Password is required</div>
+
+                                        </div>
+                                     
+                                        <div class="form-group">
+                                            <div class="maxl">
+                                                <label class="radio inline"> 
+                                                    <input type="radio" name="gender" value="male"  formControlName="gender">
+                                                    <span> Male </span> 
+                                                </label>
+                                                <label class="radio inline"> 
+                                                    <input type="radio" name="gender" value="female" formControlName="gender">
+                                                    <span>Female </span> 
+                                                </label>
+                                                <div *ngIf="signupForm.get('gender').dirty && signupForm.get('gender').errors?.maxlength">gender required</div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Your Email *" formControlName="email" />
+                                            <p *ngIf="signupForm.get('email').dirty && signupForm.get('email').errors?.required">email is required</p>
+                                            <p *ngIf="signupForm.get('email').dirty && signupForm.get('email').errors?.pattern">Invalid emailid</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Your Phone *" formControlName="mobile" />
+                                            <div *ngIf="signupForm.get('mobile').dirty && signupForm.get('mobile').errors?.required">mobile required</div>
+                                            <div *ngIf="signupForm.get('mobile').dirty && signupForm.get('mobile').errors?.maxlength">max 10 numbers allowed</div>
+                                        </div>
+                                   
+                                     
+                                        <input type="submit" class="btnRegister"  value="Register"/>
+                                    </div>
+                                </div>
+                            </div>
+                         </form>
+                     
+                        </div>
+                    </div>
+                </div>
+
+            </div>

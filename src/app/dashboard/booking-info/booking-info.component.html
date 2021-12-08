@@ -1,0 +1,180 @@
+<mat-tab-group mat-align-tabs="start" (selectedTabChange)="tabClick($event)">
+    <mat-tab label="Passenger" >
+      <form [formGroup]="passengerform">
+        <div class="row" style="padding: 20px;">
+  <div class="col-lg-3">
+    <label>Infant</label>
+    <div class="input-group">
+      <input type="button" value="-" class="button-minus" data-field="quantity" (click)="infant('-')">
+      <input type="number" step="1" max=""  name="quantity" class="quantity-field" formControlName="infants">
+      <input type="button" value="+" class="button-plus" data-field="quantity" (click)="infant('+')">
+    </div>
+</div>
+<div class="col-lg-3">
+  <label>Children</label>
+  <div class="input-group">
+    <input type="button" value="-" class="button-minus" data-field="quantity" (click)="children('-')">
+    <input type="number" step="1" max=""  name="quantity" class="quantity-field" formControlName="children">
+    <input type="button" value="+" class="button-plus" data-field="quantity" (click)="children('+')">
+  </div>
+</div>
+<div class="col-lg-3">
+  <label>Adults</label>
+  <div class="input-group">
+    <input type="button" value="-" class="button-minus" data-field="quantity" (click)="adult('-')">
+    <input type="number" step="1" max=""  name="quantity" class="quantity-field" formControlName="adults">
+    <input type="button" value="+" class="button-plus" data-field="quantity" (click)="adult('+')">
+  </div>
+</div>
+<div class="col-lg-3">
+  <button mat-raised-button color="primary" style="margin: 38px;" (click)="passengersSave()">Save</button>
+</div>
+</div>
+</form> 
+</mat-tab>
+    <mat-tab label="Reservation">
+      <form [formGroup]="reservationForm">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="form-group">
+              <label for="exampleInputEmail1">First Name</label>
+              <input type="text" class="form-control" id="firstname" placeholder="Enter a firstname" formControlName="firstname">
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Last Name</label>
+              <input type="text" class="form-control" id="lastname" aria-describedby="emailHelp" placeholder="Enter a lastname" formControlName="lastname">
+            </div>
+          </div>
+          <div class="col-lg-4">
+       
+            <mat-form-field >
+              <mat-label>Date of birth</mat-label>
+              <input matInput [matDatepicker]="picker1" formControlName="date_of_birth" >
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Passport Number</label>
+              <input type="text" class="form-control" id="passportnumber" aria-describedby="emailHelp" placeholder="Enter a passport Number" formControlName="passport_no">
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="maxl" style="margin: 25px;">
+              <label class="radio inline"> 
+                  <input type="radio" name="gender" value="male"  formControlName="gender">
+                  <span> Male </span> 
+              </label>
+              <label class="radio inline"> 
+                  <input type="radio" name="gender" value="female" formControlName="gender">
+                  <span>Female </span> 
+              </label>
+              <div *ngIf="reservationForm.get('gender').dirty && reservationForm.get('gender').errors?.required">gender required</div>
+
+          </div>
+          </div>
+        
+            <div class="col-lg-4">
+              <button mat-raised-button color="primary" style="margin: 19px;" (click)="reservationSave()">Save</button>
+            </div>
+     
+          </div>
+      </form>
+
+
+    </mat-tab>
+    <mat-tab label="Booking">
+<form [formGroup]="bookingForm">
+<div class="row">
+<div class="col-lg-4">
+  <mat-form-field>
+    <mat-label>Class</mat-label>
+    <mat-select formControlName="class" >
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let class of classOption" [value]="class">
+        {{class}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="bookingForm.get('class').errors?.required">Please choose an class</mat-error>
+  </mat-form-field>
+</div>
+<div class="col-lg-4">
+  <mat-form-field>
+    <mat-label>Seats</mat-label>
+    <mat-select formControlName="seat" >
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let seat of seatOptions" [value]="seat">
+        {{seat}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="bookingForm.get('seat').errors?.required">Please choose an class</mat-error>
+  </mat-form-field>
+</div>
+<div class="col-lg-4">
+  <mat-form-field>
+    <mat-label>Meals</mat-label>
+    <mat-select formControlName="meal" >
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let meal of mealOptions" [value]="meal">
+        {{meal}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="bookingForm.get('seat').errors?.required">Please choose an class</mat-error>
+  </mat-form-field>
+</div>
+<div class="col-lg-4">
+  <mat-form-field>
+    <mat-label>Baggage</mat-label>
+    <mat-select formControlName="baggage" >
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let baggage of baggageOptions" [value]="baggage">
+        {{baggage}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="bookingForm.get('seat').errors?.required">Please choose an class</mat-error>
+  </mat-form-field>
+</div>
+<div class="col-lg-4">
+  <button mat-raised-button color="primary" style="margin: 13px;" (click)="seatingBookingSave()">Save</button>
+</div>
+</div>
+</form>
+
+    </mat-tab>
+    <mat-tab label="Pricing">
+      <form [formGroup]="priceForm">
+ <div class="row">
+  <div class="col-lg-4">
+    <div class="form-group">
+      <label for="exampleInputEmail1">taxes</label>
+      <input type="text" class="form-control" id="firstname" readonly formControlName="taxes">
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Meal Cost</label>
+      <input type="text" class="form-control" id="firstname"readonly formControlName="seatcost">
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Seat Cost</label>
+      <input type="text" class="form-control" id="firstname" readonly formControlName="mealcost">
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Baggage Cost</label>
+      <input type="text" class="form-control" id="firstname" readonly formControlName="baggagecost">
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <button mat-raised-button color="primary" style="margin: 13px;" (click)="Payment()">Pay</button>
+  </div>
+ </div>
+    </form>
+    </mat-tab>
+  </mat-tab-group>
